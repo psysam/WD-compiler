@@ -9,7 +9,13 @@ import cookieParser from "cookie-parser";
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://wdcompiler.vercel.app",
+    methods: ["POST", "GET"],
+  })
+);
 config();
 
 app.use("/compiler", compilerRouter);
